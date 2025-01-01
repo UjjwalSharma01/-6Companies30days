@@ -1,0 +1,25 @@
+
+class Solution {
+public:
+    int findTheWinner(int n, int k) {
+        queue<int> people;
+        for (int i = 1; i <= n; i++) {
+            people.push(i);
+        }
+
+        int count = 0;
+
+        while (people.size() > 1) {
+            count++;
+
+            if (count % k == 0) {
+                people.pop();
+            } else {
+                people.push(people.front());
+                people.pop();
+            }
+        }
+
+        return people.front();
+    }
+};
