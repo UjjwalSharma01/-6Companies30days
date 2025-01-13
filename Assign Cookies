@@ -1,0 +1,28 @@
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+class Solution {
+public:
+    int findContentChildren(vector<int>& g, vector<int>& s) {
+        // Sort both vectors
+        sort(g.begin(), g.end());
+        sort(s.begin(), s.end());
+
+        int count = 0;
+        int child = g.size();
+        int cookie = s.size();
+
+        // Pointer
+        int p1 = 0;
+        int p2 = 0;
+        while(p1 < child && p2 < cookie) {
+            if(g[p1] <= s[p2]) {
+                count++;
+                p1++;
+            }
+            p2++;
+        }
+        return count;
+    }
+};
